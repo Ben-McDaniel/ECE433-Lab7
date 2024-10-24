@@ -15,13 +15,13 @@ module Lab7I2Cphase1fall2024JJS_tb;
 	wire [2:0] State=DUT.ControlUnit_phase1.State;
 	wire OneShotI2Cnegative=DUT.ControlUnit_phase1.OneShotI2Cnegative;
 	wire OneShotI2Cpositive=DUT.ControlUnit_phase1.OneShotI2Cpositive;	
-	wire [3:0] count=DUT.ControlUnit_phase1.DataCounter;
+	wire [3:0] count=DUT.ControlUnit_phase1.DataCounterer;
 
 //module Lab7I2Cphase1fall2022JJS (
 //input Reset, clock, Start,
 //output SCL, ClockLocked, inout SDA);
 
-Lab7I2Cphase1fall2024JJS DUT(Reset, clock, Start, SCL, ClockLocked, SDA);
+I2C_Host_Controller_phase1_temp DUT(Reset, clock, Start, SCL, ClockLocked, SDA);
 
 	initial begin Start = 0;  Reset = 0;  clock = 0; end
     always #2 clock=~clock;

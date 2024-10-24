@@ -1,0 +1,4 @@
+Running: xsim.dir/I2C_Host_Controller_phase1_tb_behav/xsimk -simmode gui -wdb I2C_Host_Controller_phase1_tb_behav.wdb -simrunnum 0 -socket 59059
+Design successfully loaded
+Design Loading Memory Usage: 23376 KB (Peak: 24036 KB)
+Design Loading CPU Usage: 30 ms

@@ -9,7 +9,7 @@ module I2C_SDAmodule_tb;
 
 //module I2C_SDAmodule(input ReadorWrite, Select, StartStopAck, ShiftOut,
 //output ShiftIn, inout SDA);
-I2C_SDAmodule uut (ReadorWrite, Select, StartStopAck, ShiftOut, ShiftIn, SDA);
+I2C_SDAmodule_temp uut (ReadorWrite, Select, StartStopAck, ShiftOut, ShiftIn, SDA);
 
 	initial begin  ReadorWrite = 0;  Select = 0;  StartStopAck=1;  ShiftOut = 0;  end
 	

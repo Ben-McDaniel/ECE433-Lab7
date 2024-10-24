@@ -35,20 +35,161 @@ NegativeClockedOneShot OneShotUnitNeg(ClockI2C, Reset, clock, OneShotI2Cnegative
 PositiveClockedOneShot OneShotUnitPos(ClockI2C, Reset, clock, OneShotI2Cpositive) ;
 	
 //next state block
-always@(posedge clock) begin
-if(reset == 1) begin
-	NextState <= InitialState;
-	State <= InitialState;
+//always@(posedge clock) begin
+//if(Reset == 1) begin
+//	NextState <= InitialState;
+//	State <= InitialState;
+//end else begin
+//    State <= NextState;
+//    end
+//end
+
+////counting the number of shifts
+//always@(posedge clock) begin
+//	if(Reset==1) begin DataCounter<=4'd10; end
+//	else
+//	case (State)
+//		LoadState: if(OneShotI2Cnegative==1) DataCounter<=DataCounter-1'b1; 
+//			else DataCounter<=DataCounter;
+//		WriteState: if(OneShotI2Cnegative==1) DataCounter<=DataCounter-1'b1;
+//			else DataCounter<=DataCounter;
+//		default: DataCounter<=4'd10;
+//	endcase
+//end
+
+always @(posedge clock) begin
+    if (Reset == 1) begin
+        NextState <= InitialState;
+        State <= InitialState;
+        DataCounter <= 4'd10;
+    end else begin
+        State <= NextState;
+        case (State)
+            LoadState: if (OneShotI2Cnegative == 1) 
+                            DataCounter <= DataCounter - 1'b1;
+                        else 
+                            DataCounter <= DataCounter;
+            WriteState: if (OneShotI2Cnegative == 1) 
+                             DataCounter <= DataCounter - 1'b1;
+                         else 
+                             DataCounter <= DataCounter;
+            default: DataCounter <= 4'd10;
+        endcase
+    end
+    
+    
+    
+    
+    
+    //control output
+	case(State)
+	InitialState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 1;	
+		StartDelay <= 0;
+		ShiftorHold <= 0;
+	end
+
+	StartState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 0;
+		StartDelay <= 1;	
+		ShiftorHold <= 0;
+	end
+	
+	LoadState: begin
+		if(OneShotI2Cnegative == 1) DataCounter <= DataCounter - 1;
+		else DataCounter <= DataCounter; //I think this line will cause problems...
+		WriteLoad <= 1;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 1;
+		StartStopAck <= 0;
+		StartDelay <= 0;	
+		ShiftorHold <= 0;
+	end
+
+	WriteState: begin
+		if(OneShotI2Cnegative == 1) DataCounter <= DataCounter - 1;
+		else DataCounter <= DataCounter; //I think this line will cause problems...
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 1;
+		BaudEnable <= 1;
+		StartStopAck <= 0;
+		StartDelay <= 0;
+		ShiftorHold <= OneShotI2Cnegative;
+	end
+
+	AcknowledgeState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 1;
+		Select <= 0;
+		BaudEnable <= 1;
+		StartStopAck <= 0;
+		StartDelay <= 0;
+		ShiftorHold <= 0;
+	end
+
+	TransitState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 0;
+		StartDelay <= 1;
+		ShiftorHold <= 0;
+	end
+
+	StopState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 1;
+		StartDelay <= 0;
+		ShiftorHold <= 0;
+	end
+	
+	default: begin
+        DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 1;	
+		StartDelay <= 0;
+		NextState <= InitialState;
+	end
+	
+	endcase
 end
+
+
+//output block
+always@(*) begin
+
+//next state logic
 case(State)
 
 	InitialState: begin
-		if(start == 1 && ClockI2C == 1) NextState <= StartState;
+		if(Start == 1 && ClockI2C == 1) NextState <= StartState;
 		else NextState <= State;
 	end
 
 	StartState: begin
-		if(TimeOut == 1) NextState <= LoadState;
+		if(TimeOut == 1) NextState <= LoadState; //this case fails I think???
 		else NextState <= State;
 	end
 	
@@ -79,101 +220,19 @@ case(State)
 	
 	default: NextState <= State;
 endcase
-	
-State <= NextState;
 
-end
 
-//counting the number of shifts
-always@(posedge clock) begin
-	if(Reset==1) begin DataCounter<=4'd10; end
-	else
-	case (State)
-		LoadState: if(OneShotI2Cnegative==1) DataCounter<=DataCounter-1'b1; 
-			else DataCounter<=DataCounter;
-		WriteState: if(OneShotI2Cnegative==1) DataCounter<=DataCounter-1'b1;
-			else DataCounter<=DataCounter;
-		default: DataCounter<=4'd10;
-	endcase
-end
-//output block
-always@(*) begin
-	case(State)
-	InitialState: begin
-		DataCount <= 10;
-		WriteLoad <= 0;
-		ReadorWrite <= 0;
-		Select <= 0;
-		BaudEnable <= 0;
-		StartStopAck <= 1;	
-		StartDelay <= 0;
-	end
 
-	StartState: begin
-		DataCount <= 10;
-		WriteLoad <= 0;
-		ReadorWrite <= 0;
-		Select <= 0;
-		BaudEnable <= 0;
-		StartStopAck <= 0;
-		StartDelay <= 1;	
-	end
-	
-	LoadState: begin
-		if(OneShotI2Cnegative == 1) DataCount <= DataCount - 1;
-		else DataCount <= DataCount; //I think this line will cause problems...
-		WriteLoad <= 1;
-		ReadorWrite <= 0;
-		Select <= 0;
-		BaudEnable <= 1;
-		StartStopAck <= 0;
-		StartDelay <= 0;	
-	end
 
-	WriteState: begin
-		if(OneShotI2Cnegative == 1) DataCount <= DataCount - 1;
-		else DataCount <= DataCount; //I think this line will cause problems...
-		WriteLoad <= 0;
-		ReadorWrite <= 0;
-		Select <= 1;
-		BaudEnable <= 1;
-		StartStopAck <= 0;
-		StartDelay <= 0;
-		ShiftOrHold <= OneShotI2Cnegative;
-	end
 
-	AcknowledgeState: begin
-		DataCount <= 10;
-		WriteLoad <= 0;
-		ReadorWrite <= 1;
-		Select <= 0;
-		BaudEnable <= 1;
-		StartStopAck <= 0;
-		StartDelay <= 0;
-		ShiftOrHold <= 0;
-	end
 
-	TransitState: begin
-		DataCount <= 10;
-		WriteLoad <= 0;
-		ReadorWrite <= 0;
-		Select <= 0;
-		BaudEnable <= 0;
-		StartStopAck <= 0;
-		StartDelay <= 1;
-		ShiftOrHold <= 0;
-	end
 
-	StopState: begin
-		DataCount <= 10;
-		WriteLoad <= 0;
-		ReadorWrite <= 0;
-		Select <= 0;
-		BaudEnable <= 0;
-		StartStopAck <= 1;
-		StartDelay <= 0;
-		ShiftOrHold <= 0;
-	end
+
+
+
+
+
+
 
 end
 

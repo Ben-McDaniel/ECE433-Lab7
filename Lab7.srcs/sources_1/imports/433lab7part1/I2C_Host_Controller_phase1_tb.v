@@ -11,14 +11,14 @@ module I2C_Host_Controller_phase1_tb;
 
 	wire WriteLoad, ReadorWrite, ShiftorHold, Select, BaudEnable, StartStopAck;
 	wire [2:0] State=uut.State;
-	wire [3:0] DataCounter=uut.DataCounter;
+	wire [3:0] DataCounterer=uut.DataCounter;
 	wire TimeOut=uut.TimeOut;
 	wire OneShotI2Cnegative=uut.OneShotI2Cnegative;
 	wire OneShotI2Cpostive=uut.OneShotI2Cpositive;
 //module I2C_Host_Controller_phase1(
 //input Reset, clock, Start, ClockI2C,
 //output reg WriteLoad, ReadorWrite, ShiftorHold, Select, BaudEnable, StartStopAck);
-	I2C_Host_Controller_phase1 uut (Reset, clock, Start, ClockI2C, WriteLoad, 
+	I2C_Host_Controller_phase1_temp uut (Reset, clock, Start, ClockI2C, WriteLoad, 
 	ReadorWrite, ShiftorHold, Select, BaudEnable, StartStopAck);
 	
 	initial begin  Start = 0;  Reset = 0;  ClockI2C = 0;  clock = 0; end

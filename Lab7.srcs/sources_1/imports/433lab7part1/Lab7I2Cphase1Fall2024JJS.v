@@ -37,7 +37,7 @@ I2C_BaudRateGenerator  BaudUnit(Reset, clk80MHz, BaudEnable, BaudRate, ClockFreq
 //input Reset, clock, Go, ClockI2C,
 //output reg WriteLoad, ReadorWrite, ShiftorHold, Select, BaudEnable, StartStopAck);
 
-I2C_Host_Controller_phase1  ControlUnit_phase1(Reset, clk80MHz, Start, SCL,
+I2C_Host_Controller_phase1_temp  ControlUnit_phase1(Reset, clk80MHz, Start, SCL,
 WriteLoad, ReadorWrite, ShiftorHold, Select, BaudEnable, StartStopAck);
 
 //module I2C_DataUnit #(parameter	LENGTH = 8) (

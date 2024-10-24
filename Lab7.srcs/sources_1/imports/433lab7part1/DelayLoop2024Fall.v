@@ -10,9 +10,9 @@ module DelayLoop2024Fall(
 input Clock, Reset, StartDelay,
 output reg Timeout);
 //for simulation
-//parameter	DelayCount = 3;	//simulation delay time in number of clock cycles
+parameter	DelayCount = 2;	//simulation delay time in number of clock cycles
 //for board implementation
-parameter	DelayCount = 10000;	//implementation delay time in number of clock cycles
+//parameter	DelayCount = 10000;	//implementation delay time in number of clock cycles
 parameter 	NumberOfBits = 30;
 
 reg 	[NumberOfBits-1:0]	count;
