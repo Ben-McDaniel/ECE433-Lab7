@@ -15,6 +15,7 @@ module I2C_Host_Controller_phase1_tb;
 	wire TimeOut=uut.TimeOut;
 	wire OneShotI2Cnegative=uut.OneShotI2Cnegative;
 	wire OneShotI2Cpostive=uut.OneShotI2Cpositive;
+	wire i2clock = uut.ClockI2C;
 //module I2C_Host_Controller_phase1(
 //input Reset, clock, Start, ClockI2C,
 //output reg WriteLoad, ReadorWrite, ShiftorHold, Select, BaudEnable, StartStopAck);

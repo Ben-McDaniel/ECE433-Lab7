@@ -13,7 +13,11 @@ output SCL, ClockLocked, inout SDA);
 //send this byte as address
 parameter FirstByte=8'b10011011;    //7- bit address and Read=1 bit
 //I2C speed frequency and system clock frequency
+
+
 parameter BaudRate=20'd25000, ClockFrequency=30'd80000000;
+
+
 wire clk80MHz;
 //These are simulation parameters. 
 //Comment the following two lines before making bit stream file
@@ -30,6 +34,7 @@ wire WriteLoad, ReadorWrite, ShiftorHold, Select, BaudEnable, StartStopAck;
 //input [19:0] I2Cfrequency,  //up to 1,000,000
 //input [29:0] ClockFrequency,
 //output reg  SCL);
+
 
 I2C_BaudRateGenerator  BaudUnit(Reset, clk80MHz, BaudEnable, BaudRate, ClockFrequency,  SCL);
 

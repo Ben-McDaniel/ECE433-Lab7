@@ -59,7 +59,7 @@ PositiveClockedOneShot OneShotUnitPos(ClockI2C, Reset, clock, OneShotI2Cpositive
 
 always @(posedge clock) begin
     if (Reset == 1) begin
-        NextState <= InitialState;
+//        NextState <= InitialState;
         State <= InitialState;
         DataCounter <= 4'd10;
     end else begin
@@ -76,11 +76,9 @@ always @(posedge clock) begin
             default: DataCounter <= 4'd10;
         endcase
     end
-    
-    
-    
-    
-    
+// end
+ 
+// always @ (State or posedge OneShotI2Cnegative)begin
     //control output
 	case(State)
 	InitialState: begin
@@ -169,16 +167,17 @@ always @(posedge clock) begin
 		Select <= 0;
 		BaudEnable <= 0;
 		StartStopAck <= 1;	
-		StartDelay <= 0;
-		NextState <= InitialState;
+		StartDelay <= 1;
+//		NextState <= InitialState;
 	end
 	
 	endcase
 end
 
 
-//output block
+
 always@(*) begin
+//   if (Reset == 1) NextState <= InitialState;
 
 //next state logic
 case(State)
