@@ -38,9 +38,9 @@ reg [3:0] DataCounter;
 reg [3:0] State, NextState;
 
 wire TimeOut;
-reg StartDelayLoop;
+reg StartDelay;
 //module DelayLoop2024Fall(input Clock, Reset, StartDelay, output reg Timeout);
-DelayLoop2024Fall DelayUnit(clock, Reset, StartDelayLoop,TimeOut);
+DelayLoop2024Fall DelayUnit(clock, Reset, StartDelay,TimeOut);
 
 wire OneShotNegative, OneShotPositive;
 //module NegativeClockedOneShot(input InputPulse, Reset, CLOCK,output reg OneShot);
@@ -54,19 +54,217 @@ reg ACKbit;
 always@(posedge clock)
 	if(Reset==1) begin State<=InitialState; ACKbit<=1; end
 	else begin State<=NextState; 
-		if(OneShotPositive==1) ACKbit<=SDA; else ACKbit<=ACKbit; end
+		if(OneShotPositive==1) ACKbit<=SDA; else ACKbit<=ACKbit;
+	//output logic
+	case(State)
+	InitialState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 1;	
+		StartDelay <= 0;
+		ShiftorHold <= 0;
+		DONE <= 0;
+	end
+
+	StartState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 0;
+		StartDelay <= 1;	
+		ShiftorHold <= 0;
+		DONE <= 0;
+	end
 	
-//next state block
+	LoadState: begin
+		if(OneShotNegative == 1) begin DataCounter <= DataCounter - 1; StartDelay <= 0; end
+		else DataCounter <= DataCounter; //I think this line will cause problems...
+		WriteLoad <= 1;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 1;
+		StartStopAck <= 0;	
+		ShiftorHold <= 0;
+		DONE <= 0;
+	end
 
+	WriteState: begin
+		if(OneShotNegative == 1) DataCounter <= DataCounter - 1;
+		else DataCounter <= DataCounter; //I think this line will cause problems...
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 1;
+		BaudEnable <= 1;
+		StartStopAck <= 0;
+		StartDelay <= 0;
+		ShiftorHold <= OneShotNegative;
+		DONE <= 0;
+	end
 
+	AcknowledgeWriteState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 1;
+		Select <= 0;
+		BaudEnable <= 1;
+		StartStopAck <= 0;
+		StartDelay <= 0;
+		ShiftorHold <= 0;
+		DONE <= 0;
+	end
 
-//count update, negative SCL edge to write and positive SCL edge to read
+    CheckState: begin
+        DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 0;
+		StartDelay <= 0;
+		ShiftorHold <= 0;
+		DONE <= 0;
+	end
 
+    ReadState: begin
+        if(OneShotPositive) begin DataCounter <= DataCounter - 1; StartDelay <= 0; end
+        else begin DataCounter <= DataCounter; StartDelay <= StartDelay; end
+		WriteLoad <= 0;
+		ReadorWrite <= 1;
+		Select <= 0;
+		BaudEnable <= 1;
+		StartStopAck <= 0;
+		ShiftorHold <= OneShotPositive;
+		DONE <= 0;
+	end
+    
+    WaitState: begin
+        DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 1;
+		Select <= 0;
+		BaudEnable <= 1;
+		StartStopAck <= 1;
+		StartDelay <= 0;
+		DONE <= 0;
+		ShiftorHold <= 0;
+	end
+    
+    AcknowledgeReadState: begin
+        DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 1;
+		StartStopAck <= 0;
+		StartDelay <= 0;
+		DONE <= 0;
+		ShiftorHold <= 0;
+	end
+    
+	TransitState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 0;
+		StartDelay <= 1;
+		ShiftorHold <= 0;
+		DONE <= 0;
+	end
 
+	StopState: begin
+		DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 1;
+		StartDelay <= 1;
+		DONE <= 1;
+		ShiftorHold <= 0;
+	end
+	
+	default: begin
+        DataCounter <= 10;
+		WriteLoad <= 0;
+		ReadorWrite <= 0;
+		Select <= 0;
+		BaudEnable <= 0;
+		StartStopAck <= 1;	
+		StartDelay <= 1;
+		DONE <= 0;
+	end
+	
+	endcase
+end
+always@(*) begin
+//next state logic
+case(State)
 
-//output block
+	InitialState: begin
+		if(Start == 1 && ClockI2C == 1) NextState <= StartState;
+		else NextState <= State;
+	end
 
+	StartState: begin
+		if(TimeOut == 1) NextState <= LoadState;
+		else NextState <= State;
+	end
+	
+	LoadState: begin
+		if(DataCounter == 9) NextState <= WriteState;
+		else NextState <= State;
+	end
 
+	WriteState: begin
+		if(DataCounter == 1) NextState <= AcknowledgeWriteState;
+		else NextState <= State;
+	end
 
+	AcknowledgeWriteState: begin
+		if(OneShotPositive == 1) NextState <= CheckState;
+		else NextState <= State;
+	end
+
+    CheckState: begin
+        if(SDA == 0) NextState <= ReadState;
+        else NextState <= InitialState;
+    end
+    
+    ReadState: begin
+        if(DataCounter == 2) NextState <= WaitState;
+        else NextState <= State;
+    end
+    
+    WaitState: begin
+        if(OneShotNegative) NextState <= AcknowledgeReadState;
+        else NextState <= State;
+    end
+    
+    AcknowledgeReadState: begin
+        if(OneShotPositive) NextState <= TransitState;
+        else NextState <= State;
+    end
+    
+	TransitState: begin
+		if(TimeOut == 1) NextState <= StopState;
+		else NextState <= State;
+	end
+
+	StopState: begin
+		if(TimeOut == 1) NextState <= InitialState;
+		else NextState <= State;
+	end
+	
+	default: NextState <= State;
+endcase
+
+end
 
 endmodule
