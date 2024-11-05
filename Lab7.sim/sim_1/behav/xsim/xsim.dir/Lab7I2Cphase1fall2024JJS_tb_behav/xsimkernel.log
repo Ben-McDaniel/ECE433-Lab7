@@ -1,4 +1,7 @@
-Running: xsim.dir/Lab7I2Cphase1fall2024JJS_tb_behav/xsimk -simmode gui -wdb Lab7I2Cphase1fall2024JJS_tb_behav.wdb -simrunnum 0 -socket 43391
+Running: xsim.dir/Lab7I2Cphase1fall2024JJS_tb_behav/xsimk -simmode gui -wdb Lab7I2Cphase1fall2024JJS_tb_behav.wdb -simrunnum 0 -socket 39299
 Design successfully loaded
 Design Loading Memory Usage: 24376 KB (Peak: 24764 KB)
-Design Loading CPU Usage: 60 ms
+Design Loading CPU Usage: 40 ms
+Simulation completed
+Simulation Memory Usage: 110732 KB (Peak: 163644 KB)
+Simulation CPU Usage: 50 ms

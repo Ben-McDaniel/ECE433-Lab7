@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Nov  5 11:11:52 2024
+# Process ID: 154001
+# Current directory: /home/beandog/433/ECE433-Lab7/final-project/finalproject.runs/synth_1
+# Command line: vivado -log pong.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pong.tcl
+# Log file: /home/beandog/433/ECE433-Lab7/final-project/finalproject.runs/synth_1/pong.vds
+# Journal file: /home/beandog/433/ECE433-Lab7/final-project/finalproject.runs/synth_1/vivado.jou
+# Running On: archlinux, OS: Linux, CPU Frequency: 3470.587 MHz, CPU Physical cores: 16, Host memory: 11908 MB
+#-----------------------------------------------------------
+source pong.tcl -notrace

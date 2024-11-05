@@ -1,47 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1729878847" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Lab7I2Cphase1fall2024JJS.dcp">
-  <File Type="VDS-TIMINGSUMMARY" Name="Lab7I2Cphase1fall2024JJS_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="Lab7I2Cphase1fall2024JJS.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="Lab7I2Cphase1fall2024JJS_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="Lab7I2Cphase1fall2024JJS_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="Lab7I2Cphase1fall2024JJS_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="Lab7I2Cphase1fall2024JJS.vds"/>
-  <File Type="REPORTS-TCL" Name="Lab7I2Cphase1fall2024JJS_reports.tcl"/>
-  <File Type="VDS-TIMING-PB" Name="Lab7I2Cphase1fall2024JJS_timing_summary_synth.pb"/>
-  <File Type="PA-TCL" Name="Lab7I2Cphase1fall2024JJS.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1730739807" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/Lab7I2Cphase1fall2024JJS.dcp">
+  <File Type="VDS-TIMINGSUMMARY" Name="Lab7I2Cphase2fall2024JJS_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="Lab7I2Cphase2fall2024JJS.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="Lab7I2Cphase2fall2024JJS_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="Lab7I2Cphase2fall2024JJS_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="Lab7I2Cphase2fall2024JJS_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="Lab7I2Cphase2fall2024JJS.vds"/>
+  <File Type="REPORTS-TCL" Name="Lab7I2Cphase2fall2024JJS_reports.tcl"/>
+  <File Type="VDS-TIMING-PB" Name="Lab7I2Cphase2fall2024JJS_timing_summary_synth.pb"/>
+  <File Type="PA-TCL" Name="Lab7I2Cphase2fall2024JJS.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/DelayLoop2024Fall.v">
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/BCDto7Segment.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/DelayLoop2024Fall.v"/>
-        <Attr Name="ImportTime" Val="1728961005"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/BCDto7Segment.v"/>
+        <Attr Name="ImportTime" Val="1728874182"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/I2C_BaudRateGenerator.v">
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/DelayLoop2024Fall.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/I2C_BaudRateGenerator.v"/>
-        <Attr Name="ImportTime" Val="1728869503"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/DelayLoop2024Fall.v"/>
+        <Attr Name="ImportTime" Val="1729052916"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/I2C_DataUnit.v">
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/DisplayMuxNexysA7.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/I2C_DataUnit.v"/>
-        <Attr Name="ImportTime" Val="1728869503"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/DisplayMuxNexysA7.v"/>
+        <Attr Name="ImportTime" Val="1728874182"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/I2C_Host_Controller_phase1_temp.v">
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/I2C_BaudRateGenerator.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/I2C_Host_Controller_phase1_temp.v"/>
-        <Attr Name="ImportTime" Val="1728869903"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/I2C_BaudRateGenerator.v"/>
+        <Attr Name="ImportTime" Val="1728868126"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/I2C_DataUnit.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/I2C_DataUnit.v"/>
+        <Attr Name="ImportTime" Val="1728868130"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/I2C_Host_Controller_phase2_temp.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/I2C_Host_Controller_phase2_temp.v"/>
+        <Attr Name="ImportTime" Val="1729273640"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/I2C_SDAmodule.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/I2C_SDAmodule.v"/>
+        <Attr Name="ImportTime" Val="1728868130"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -56,8 +83,139 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/I2C_ShiftRegister.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/I2C_ShiftRegister.v"/>
+        <Attr Name="ImportTime" Val="1728868130"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/NegativeClockedOneShot.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/NegativeClockedOneShot.v"/>
+        <Attr Name="ImportTime" Val="1728868108"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/OneTemperatureConverter.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/OneTemperatureConverter.v"/>
+        <Attr Name="ImportTime" Val="1728874182"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/PositiveClockedOneShot.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/PositiveClockedOneShot.v"/>
+        <Attr Name="ImportTime" Val="1728874182"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/ReadTMP101fall2024JJS.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/ReadTMP101fall2024JJS.v"/>
+        <Attr Name="ImportTime" Val="1728874052"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/Refreshing7SegNexysA7.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/Refreshing7SegNexysA7.v"/>
+        <Attr Name="ImportTime" Val="1728874176"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/SevenSegDriverNexysA7.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/SevenSegDriverNexysA7.v"/>
+        <Attr Name="ImportTime" Val="1729737723"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part2/Lab7I2Cphase2fall2024JJS.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/Lab7I2Cphase2fall2024JJS.v"/>
+        <Attr Name="ImportTime" Val="1729273629"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/I2C_Host_Controller_phase2.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/I2C_Host_Controller_phase1_temp.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/I2C_Host_Controller_phase1_temp.v"/>
+        <Attr Name="ImportTime" Val="1728869903"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/Lab7I2Cphase1Fall2024JJS.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/Lab7I2Cphase1Fall2024JJS.v"/>
+        <Attr Name="ImportTime" Val="1728962144"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/DelayLoop2024Fall.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/DelayLoop2024Fall.v"/>
+        <Attr Name="ImportTime" Val="1728961005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/I2C_BaudRateGenerator.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/I2C_BaudRateGenerator.v"/>
+        <Attr Name="ImportTime" Val="1728869503"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/I2C_DataUnit.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/I2C_DataUnit.v"/>
+        <Attr Name="ImportTime" Val="1728869503"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/433lab7part1/I2C_ShiftRegister.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/I2C_ShiftRegister.v"/>
         <Attr Name="ImportTime" Val="1728869503"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -67,6 +225,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/433lab7part1/NegativeClockedOneShot.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/NegativeClockedOneShot.v"/>
         <Attr Name="ImportTime" Val="1728869503"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -76,6 +235,7 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/433lab7part1/PositiveClockedOneShot.v">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/PositiveClockedOneShot.v"/>
         <Attr Name="ImportTime" Val="1728869443"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -83,30 +243,29 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/433lab7part1/Lab7I2Cphase1Fall2024JJS.v">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part1/Lab7I2Cphase1Fall2024JJS.v"/>
-        <Attr Name="ImportTime" Val="1728962144"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="Lab7I2Cphase1fall2024JJS"/>
+      <Option Name="TopModule" Val="Lab7I2Cphase2fall2024JJS"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
     <File Path="$PSRCDIR/constrs_1/new/idcwhatyoucallit.xdc">
       <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/constrs_1/imports/433lab7part2/Lab7I2Cphase2fall2024JJS.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Downloads/433lab7part2/Lab7I2Cphase2fall2024JJS.xdc"/>
+        <Attr Name="ImportTime" Val="1729049773"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
       </FileInfo>
     </File>
     <Config>
-      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/idcwhatyoucallit.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>

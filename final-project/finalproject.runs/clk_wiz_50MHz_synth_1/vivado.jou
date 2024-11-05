@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Nov  5 10:42:16 2024
+# Process ID: 133389
+# Current directory: /home/beandog/433/ECE433-Lab7/final-project/finalproject.runs/clk_wiz_50MHz_synth_1
+# Command line: vivado -log clk_wiz_50MHz.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source clk_wiz_50MHz.tcl
+# Log file: /home/beandog/433/ECE433-Lab7/final-project/finalproject.runs/clk_wiz_50MHz_synth_1/clk_wiz_50MHz.vds
+# Journal file: /home/beandog/433/ECE433-Lab7/final-project/finalproject.runs/clk_wiz_50MHz_synth_1/vivado.jou
+# Running On: archlinux, OS: Linux, CPU Frequency: 2933.685 MHz, CPU Physical cores: 16, Host memory: 11908 MB
+#-----------------------------------------------------------
+source clk_wiz_50MHz.tcl -notrace

@@ -1,0 +1,85 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+| Date         : Tue Nov  5 11:14:20 2024
+| Host         : archlinux running 64-bit unknown
+| Command      : report_control_sets -verbose -file pong_control_sets_placed.rpt
+| Design       : pong
+| Device       : xc7a100t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |     7 |
+|    Minimum number of control sets                        |     7 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    32 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |     7 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     0 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     1 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              13 |            9 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              10 |            3 |
+| Yes          | No                    | No                     |              18 |            5 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              23 |            8 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------+-----------------------------+--------------------------+------------------+----------------+--------------+
+|      Clock Signal      |        Enable Signal        |     Set/Reset Signal     | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------------+-----------------------------+--------------------------+------------------+----------------+--------------+
+|  slowClk/inst/clk_out1 |                             |                          |                1 |              1 |         1.00 |
+|  clk25                 | game_inst/missTimer         | video_timer_inst/SS[0]   |                2 |              6 |         3.00 |
+|  clk25                 | game_inst/paddlePosition    |                          |                2 |              8 |         4.00 |
+|  clk25                 |                             | video_timer_inst/endline |                3 |             10 |         3.33 |
+|  clk25                 | video_timer_inst/endline    |                          |                3 |             10 |         3.33 |
+|  clk25                 |                             |                          |                8 |             12 |         1.50 |
+|  clk25                 | video_timer_inst/endOfFrame | game_inst/ballXdir11_out |                6 |             17 |         2.83 |
++------------------------+-----------------------------+--------------------------+------------------+----------------+--------------+
+
+

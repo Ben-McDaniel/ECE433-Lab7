@@ -37,4 +37,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log Lab7I2Cphase1fall2024JJS.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Lab7I2Cphase1fall2024JJS.tcl
+EAStep vivado -log Lab7I2Cphase2fall2024JJS.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Lab7I2Cphase2fall2024JJS.tcl

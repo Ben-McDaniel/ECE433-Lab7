@@ -20,7 +20,7 @@ Compiling module xil_defaultlib.NegativeClockedOneShot
 Compiling module xil_defaultlib.PositiveClockedOneShot
 Compiling module xil_defaultlib.I2C_Host_Controller_phase1_temp
 Compiling module xil_defaultlib.I2C_ShiftRegister
-Compiling module xil_defaultlib.I2C_SDAmodule_temp
+Compiling module xil_defaultlib.I2C_SDAmodule
 Compiling module xil_defaultlib.I2C_DataUnit
 Compiling module xil_defaultlib.Lab7I2Cphase1fall2024JJS
 Compiling module xil_defaultlib.Lab7I2Cphase1fall2024JJS_tb

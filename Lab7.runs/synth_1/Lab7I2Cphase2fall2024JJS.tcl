@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/beandog/433/ECE433-Lab7/Lab7.runs/synth_1/Lab7I2Cphase1fall2024JJS.tcl"
+  variable script "/home/beandog/433/ECE433-Lab7/Lab7.runs/synth_1/Lab7I2Cphase2fall2024JJS.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,10 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 4
 set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache ./.Xil/Vivado-1360631-archlinux/incrSyn
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -93,15 +91,22 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/DelayLoop2024Fall.v
-  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/I2C_BaudRateGenerator.v
-  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/I2C_DataUnit.v
-  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/I2C_Host_Controller_phase1_temp.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/BCDto7Segment.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/DelayLoop2024Fall.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/DisplayMuxNexysA7.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/I2C_BaudRateGenerator.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/I2C_DataUnit.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/I2C_Host_Controller_phase2_temp.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/I2C_SDAmodule.v
   /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/I2C_SDAmodule_temp.v
-  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/I2C_ShiftRegister.v
-  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/NegativeClockedOneShot.v
-  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/PositiveClockedOneShot.v
-  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part1/Lab7I2Cphase1Fall2024JJS.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/I2C_ShiftRegister.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/NegativeClockedOneShot.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/OneTemperatureConverter.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/PositiveClockedOneShot.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/ReadTMP101fall2024JJS.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/Refreshing7SegNexysA7.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/SevenSegDriverNexysA7.v
+  /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/imports/433lab7part2/Lab7I2Cphase2fall2024JJS.v
 }
 read_ip -quiet /home/beandog/433/ECE433-Lab7/Lab7.srcs/sources_1/ip/Clock80MHz/Clock80MHz.xci
 set_property used_in_implementation false [get_files -all /home/beandog/433/ECE433-Lab7/Lab7.gen/sources_1/ip/Clock80MHz/Clock80MHz_board.xdc]
@@ -117,8 +122,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/beandog/433/ECE433-Lab7/Lab7.srcs/constrs_1/new/idcwhatyoucallit.xdc
-set_property used_in_implementation false [get_files /home/beandog/433/ECE433-Lab7/Lab7.srcs/constrs_1/new/idcwhatyoucallit.xdc]
+read_xdc /home/beandog/433/ECE433-Lab7/Lab7.srcs/constrs_1/imports/433lab7part2/Lab7I2Cphase2fall2024JJS.xdc
+set_property used_in_implementation false [get_files /home/beandog/433/ECE433-Lab7/Lab7.srcs/constrs_1/imports/433lab7part2/Lab7I2Cphase2fall2024JJS.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
@@ -126,7 +131,7 @@ read_checkpoint -auto_incremental -incremental /home/beandog/433/ECE433-Lab7/Lab
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top Lab7I2Cphase1fall2024JJS -part xc7a100tcsg324-1
+synth_design -top Lab7I2Cphase2fall2024JJS -part xc7a100tcsg324-1
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
@@ -136,10 +141,10 @@ if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef Lab7I2Cphase1fall2024JJS.dcp
+write_checkpoint -force -noxdef Lab7I2Cphase2fall2024JJS.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file Lab7I2Cphase1fall2024JJS_utilization_synth.rpt -pb Lab7I2Cphase1fall2024JJS_utilization_synth.pb"
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file Lab7I2Cphase2fall2024JJS_utilization_synth.rpt -pb Lab7I2Cphase2fall2024JJS_utilization_synth.pb"
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]
